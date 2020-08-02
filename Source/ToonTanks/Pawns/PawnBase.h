@@ -13,13 +13,13 @@ class TOONTANKS_API APawnBase : public APawn
 {
 	GENERATED_BODY()
 private:
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	UCapsuleComponent* CapsuleComp;
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* BaseMesh;
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* TurretMesh;
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	USceneComponent* ProjectileSpawnPoint;
 
 public:
