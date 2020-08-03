@@ -24,8 +24,6 @@ private:
 	float FireRate = 2.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
 	float FireRange = 500.0f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
-	float RotateSpeed = 100.0f;
 
 	FTimerHandle FireRateTimeHandle;
 	APawnTank* PlayerPawn;
@@ -41,4 +39,5 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void HandleDestruction() override;
 };
