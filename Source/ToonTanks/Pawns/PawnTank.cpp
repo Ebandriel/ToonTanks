@@ -49,14 +49,13 @@ void APawnTank::BeginPlay()
 	Super::BeginPlay();
 
 	PlayerControllerRef = Cast<APlayerController>(GetController());
-	PlayerControllerRef->bShowMouseCursor = true;
-	PlayerControllerRef->bEnableClickEvents = true;
+	
 }
 
 void APawnTank::HandleDestruction()
 {
 	Super::HandleDestruction();
-	Destroy();
+	
 }
 
 void APawnTank::CalculateMoveInput(float Value)
