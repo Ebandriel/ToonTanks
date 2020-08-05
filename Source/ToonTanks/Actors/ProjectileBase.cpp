@@ -5,6 +5,8 @@
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystemComponent.h"
+#include "Sound/SoundBase.h"
 
 void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
@@ -16,8 +18,11 @@ void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, DamageType);
+		UGameplayStatics::SpawnEmitterAtLocation(this, HitParticle, GetActorLocation());
+		UGameplayStatics::SpawnSoundAtLocation(this, HitSound, GetActorLocation());
+		Destroy();
 	}
-	Destroy();
+	
 }
 
 // Sets default values
@@ -35,6 +40,11 @@ AProjectileBase::AProjectileBase()
 	ProjectileMovement->MaxSpeed = MovementSpeed;
 	InitialLifeSpan = 3.0f;
 
+	TrailParticle = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Trail Particle"));
+	TrailParticle->SetupAttachment(RootComponent);
+
+	
+
 }
 
 // Called when the game starts or when spawned
@@ -42,6 +52,7 @@ void AProjectileBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	UGameplayStatics::PlaySoundAtLocation(this, LaunchSound, GetActorLocation());
 }
 
 

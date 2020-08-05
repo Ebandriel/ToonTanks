@@ -8,6 +8,9 @@
 
 class UCapsuleComponent;
 class AProjectileBase;
+class UHealthComponent;
+class USoundBase;
+
 UCLASS()
 class TOONTANKS_API APawnBase : public APawn
 {
@@ -22,9 +25,16 @@ private:
 	UStaticMeshComponent* TurretMesh;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	UHealthComponent* HealthComponent;
 	//Variables
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile Type", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<AProjectileBase> ProjectileClass;
+	UPROPERTY(EditAnywhere, Category="Effects")
+	UParticleSystem* DeathParticle;
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	USoundBase* DeathSound;
+
 public:
 	// Sets default values for this pawn's properties
 	APawnBase();
