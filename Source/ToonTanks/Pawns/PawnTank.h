@@ -33,7 +33,7 @@ private:
 	
 
 	APlayerController* PlayerControllerRef;
-	bool bIsPlayerAlive = true;
+
 	void CalculateMoveInput(float Value);
 	void CalculateRoatateInput(float Value);
 
@@ -46,11 +46,11 @@ public:
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	virtual void HandleDestruction() override;
 
-	bool GetIsPLayerAlive();
+	virtual void HandleDestruction() override;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

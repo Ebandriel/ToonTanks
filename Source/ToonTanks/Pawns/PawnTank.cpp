@@ -55,16 +55,7 @@ void APawnTank::BeginPlay()
 void APawnTank::HandleDestruction()
 {
 	Super::HandleDestruction();
-	bIsPlayerAlive = false;
-
-	SetActorHiddenInGame(true);
-	SetActorTickEnabled(false);
 	
-}
-
-bool APawnTank::GetIsPLayerAlive()
-{
-	return bIsPlayerAlive;
 }
 
 void APawnTank::CalculateMoveInput(float Value)
