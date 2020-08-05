@@ -6,8 +6,10 @@
 #include "PawnBase.h"
 #include "PawnTank.generated.h"
 
+
 class USpringArmComponent;
 class UCameraComponent;
+class UCameraShake;
 /**
  * 
  */
@@ -27,6 +29,8 @@ private:
 	float MoveSpeed = 100.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
 	float RotateSpeed = 100.0f;
+
+	
 
 	APlayerController* PlayerControllerRef;
 	bool bIsPlayerAlive = true;

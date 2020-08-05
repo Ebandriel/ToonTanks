@@ -4,7 +4,7 @@
 #include "PawnTank.h"
 #include "GameFramework/SpringArmCOmponent.h"
 #include "Camera/CameraComponent.h"
-
+#include "Camera/CameraShake.h"
 
 
 APawnTank::APawnTank()
